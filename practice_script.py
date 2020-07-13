@@ -16,9 +16,8 @@ async def newEvent():
             else:
                 eventCount = 0
                 f = open("events.txt", "r")
-                for line in f:
-                    data = line
-                    requests.post("Тут нужен URL", data = data)
+                data = f.read()
+                requests.post("Тут нужен URL", data = data)
                 f.close()
                 f.open("events.txt", "w")
                 f.write("")
