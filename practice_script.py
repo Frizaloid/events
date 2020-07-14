@@ -19,9 +19,9 @@ async def newEvent():
                 f = open("events.txt", "r")
                 for line in f:
                     data.append(eval(line))
-                requests.post("Тут нужен URL", data = data)
+                requests.post("Тут нужен URL", json = data)
                 f.close()
-                f.open("events.txt", "w")
+                f = open("events.txt", "w")
                 f.write("")
                 f.close()
 
