@@ -7,7 +7,7 @@ async def newEvent():
     async with websockets.connect(uri) as websocket:
         eventCount = 0
         while True:
-            if eventCount < 201:
+            if eventCount < 200:
                 f = open("events.txt", "a")
                 event = await websocket.recv()
                 f.write(event + '\n')
@@ -15,8 +15,10 @@ async def newEvent():
                 eventCount += 1
             else:
                 eventCount = 0
+                data = []
                 f = open("events.txt", "r")
-                data = f.read()
+                for line in f:
+                    data.append(eval(line))
                 requests.post("Тут нужен URL", data = data)
                 f.close()
                 f.open("events.txt", "w")
